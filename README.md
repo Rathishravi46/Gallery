@@ -1,5 +1,5 @@
 # Ex.08 Design of Interactive Image Gallery
-# Date:20.05.2025
+# Date: 12.05.2025
 # AIM:
 To design a web application for an inteactive image gallery with minimum five images.
 
@@ -23,213 +23,171 @@ Validate the HTML and CSS code.
 Publish the website in the given URL.
 
 # PROGRAM :
+
 ```
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MY IMAGE GALLERY</title>
+    <title>My Image Gallery</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color:pink;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            margin: 0;
+            padding: 0;
+            background-image: url('bg3.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        header {
+            text-align: center;
+            font-size: 30px;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: white;
+        }
+
+        div img {
+            width: 300px;
+            height: 300px;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        .img{
             overflow: hidden;
         }
-
-        .title {
-            position: absolute;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 42px;
-            font-style:oblique;
-            color:cyan;
-            z-index: 1;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+        div{
+            transition: 0.25s;
         }
 
-        .gallery-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(370px, 1fr));
-            gap: 10px;
-            padding: 20px;
-            max-width: 1200px;
-            width: 100%;
-        }
-
-        .gallery-item img {
-            width: 100%; 
-            height: 300px; 
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .gallery-item img:hover {
-            transform: scale(1.30);
-            cursor: pointer;
-        }
-
-        .slider {
-            display: none;
-            position: fixed;
-            z-index: 2;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 100%;
-            text-align: center;
-        }
-
-        .slider img {
-            width: 90%;
-            max-width: 800px;
+        div :hover {
+            transform: scale(1.1);
             border-radius: 10px;
-            transition: opacity 0.5s ease;
+        }
+        
+        
+        .col1 {
+            display: flex;
+            gap: 30px;
+            margin-top: 30px;
+            justify-content: center;
+        }
+        .col2 {
+            display: flex;
+            gap: 30px;
+            margin-top: 30px;
+            justify-content: center;
         }
 
-        .arrow {
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 40px;
-            color: white;
-            user-select: none;
-            padding: 10px;
-        }
-
-        .arrow.left {
-            left: 10px;
-            color: aqua;
-        }
-
-        .arrow.right {
-            right: 10px;
-            color: aqua;
-        }
-
-        .arrow:hover {
-            color: lightgray;
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: rgba(0, 0, 0, 0.6);
-            color: rgb(0, 255, 251);
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-            font-size: 20px;
-            border-radius: 5px;
-            display: none;
-        }
-
-        .close-btn:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-        }
-        .container
-        {
-          text-align:center;
-          right: 600px;
-          position: absolute;
-          bottom: 8px;
-          background-color: white;
-          color: black;
-          width: cover;
-          height: 40px;
-          font-style:italic;
-        }
-    </style>
-</head>
-<body>
-    <div class="title">MY GALLERY</div> 
-    
-    <div class="gallery-container">
-        <div class="gallery-item">
-            <img src="vijay.jpeg" alt="Image 1">
-        </div>
-        <div class="gallery-item">
-            <img src="str.jpg" alt="Image 2">
-        </div>
-        <div class="gallery-item">
-            <img src="tr.jpg" alt="Image 3">
-        </div>
-        <div class="gallery-item">
-            <img src="danush.jpg" alt="Static Image">
-        </div>
-        <div class="gallery-item">
-            <img src="vj.jpg" alt="Image 5">
-        </div>
-        <div class="gallery-item">
-            <img src="captain.avif" alt="Image 6">
-        </div>
-        <footer class="container">
-        <p>&copy;DESINGED BY GOKUL S (212224230075)</p>
-        </footer>
         
 
-    </div>
+        span {
+            color: white;
+            position: absolute;
+            top: 5%;
+            right: 5%;
+            font-size: 50px;
+            cursor: pointer;
+        }
+        #dis{
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+        }
+        #dis img{
+            width: 500px;
+            height: 600px;
+        }
+        .footer{
+            text-align: center;
+            margin-bottom:5%;
+            background-color:whitesmoke;
+            color:rgb(11, 10, 10);
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 25px;
+        }
+    </style>
+    
+</head>
 
-    <div class="slider" id="slider">
-        <button class="close-btn" id="close-btn">&#10006;</button>
-        <span class="arrow left" id="prev">&#10094;</span>
-        <img src="" alt="Slider Image" id="slider-img">
-        <span class="arrow right" id="next">&#10095;</span>
+<body>
+    <header>
+        <h1>My Image Gallery</h1>
+    </header>
+    <section id="dis">
+        <img src="bg3.jpg" alt="" id="disimg">
+        <span class="cls" onclick="closes()">&times;</span>
+        
+    </section>
+    <div class="col1">
+        <div class="img">
+            <img src="img1.jpg" opens(this.src)" id="img1" alt="">
+        </div>
+        <div class="img">
+            <img src="img2.jpg" opens(this.src)" id="img2" alt="">
+        </div>
+        <div class="img">
+            <img src="img3.jpg" onclick="opens(this.src)" id="img3" alt="">
+        </div>
+        <div class="img">
+            <img src="img4.jpg" onclick="opens(this.src)" id="img4" alt="">
+        </div>
     </div>
+    <div class="col2">
+        <div class="img">
+            <img src="img5.jpg" onclick="opens(this.src)" id="img5" alt="">
+        </div>
+        <div class="img">
+            <img src="img6.jpg" onclick="opens(this.src)" id="img6" alt="">
+        </div>
+        <div class="img">
+            <img src="img7.jpg" onclick="opens(this.src)" id="img7" alt="">
+        </div>
+        <div class="img">
+            <img src="img8.jpg" onclick="opens(this.src)" id="img8" alt="">
+        </div>
+
+    </div>
+    <div class="footer">
+        <footer>
+            Designed by Asin Renix V &copy; 2024 
+       </footer>
+    </div>
+    
 
     <script>
-        const images = document.querySelectorAll('.gallery-item img');
-        const slider = document.getElementById('slider');
-        const sliderImg = document.getElementById('slider-img');
-        const prevBtn = document.getElementById('prev');
-        const nextBtn = document.getElementById('next');
-        const closeBtn = document.getElementById('close-btn');
+        var dis=document.getElementById("dis");
+        var disimg=document.getElementById("disimg");
+        function opens(image){
+            dis.style.display="flex";
+            disimg.src=image;
+        }
+        function closes(){
+            dis.style.display="none";
 
-        let currentIndex = 0;
-        images.forEach((image, index) => {
-            image.addEventListener('click', () => {
-                slider.style.display = 'block';
-                sliderImg.src = image.src;
-                currentIndex = index;
-                closeBtn.style.display = 'block'; 
-            });
-        });
-
-        prevBtn.addEventListener('click', (e) => {
-            e.stopPropagation(); 
-            currentIndex = (currentIndex - 1 + images.length) % images.length;
-            sliderImg.src = images[currentIndex].src;
-        });
-        nextBtn.addEventListener('click', (e) => {
-            e.stopPropagation(); 
-            currentIndex = (currentIndex + 1) % images.length;
-            sliderImg.src = images[currentIndex].src;
-        });
-
-        closeBtn.addEventListener('click', () => {
-            slider.style.display = 'none';
-            closeBtn.style.display = 'none';
-        });
-
-        slider.addEventListener('click', () => {
-            slider.style.display = 'none';
-            closeBtn.style.display = 'none';
-        });
+        }
     </script>
 
 </body>
+
 </html>
+
 ```
 # OUTPUT:
-![image](https://github.com/user-attachments/assets/f067bd1a-cd89-4802-9442-e270ee02576c)
-![image](https://github.com/user-attachments/assets/738c6cf3-ad95-4e57-a346-63210b45b2b2)
+![image](https://github.com/user-attachments/assets/f7976511-e3df-46d3-9b14-b5ac2c52c3c9)
+
+![image](https://github.com/user-attachments/assets/09f89565-d14b-44fc-b703-7f13e40d74ab)
+
+![image](https://github.com/user-attachments/assets/051033c1-06fc-41c2-86d1-0e21a2070455)
+
 
 # RESULT:
 The program for designing an interactive image gallery using HTML, CSS and JavaScript is executed successfully.
